@@ -37,13 +37,17 @@
 	<table id="tabela" class="table table-striped table-bordered table-sm">
 		<thead>
 		<tr>
+		<th>Ver
 		<c:if test="${perfilSessao.admin}">
-			<th>Ver </th>
+			<th>Deletar
 		</c:if> 
 		<th>Pedido</th><th>Data</th><th>Funcionário</th><th>Total</th>
 		
 		<tr>
 		<th></th>
+		<c:if test="${perfilSessao.admin}">
+			<th></th>
+		</c:if>
 		<th><input type="text" id="filtro1"/></th>
 		<th><input type="text" id="filtro2"/></th>
 		<th><input type="text" id="filtro3"/></th>
@@ -56,7 +60,13 @@
 		<tbody>
 		<tr>
 		<c:forEach items="${vendas}" var="v">
+			
 			<td><i class="fas fa-search" onclick="modalPesquisarVenda('${v.pedido}')"></i></td>
+			
+			<c:if test="${perfilSessao.admin}">
+				<td><i class="fas fa-trash" onclick="modalDeletar('venda','${v.vendaID}')"></i></td>
+			</c:if>
+			
 			<td>${v.pedido}
 			<td>
 			<c:set var = "data" value = "${fn:substring(v.data, 8, 10)}/${fn:substring(v.data, 5, 7)}/${fn:substring(v.data, 0, 4)}" />
@@ -64,7 +74,7 @@
 			
 			<td>${v.funcionario.nome} 
 			
-			<td>R\$${v.total}  
+			<td><fmt:formatNumber maxFractionDigits="2" value="${v.total}" type="currency"/>
 			<tr>	
 		</c:forEach>
 		</tbody>

@@ -268,6 +268,9 @@ public class SistemaController {
 		List<Venda> vendas = new ArrayList<Venda>();
 		if(nota == null) {
 			vendas = vendaDao.ultimas();
+		} else {
+			vendas = vendaDao.nota(nota);
+		}
 			List<Venda> vendaAnterior = vendas;
 			List<Venda> vendaFinal = new ArrayList<Venda>();
 			int ini = 0;
@@ -283,9 +286,7 @@ public class SistemaController {
 			}
 			vendas.clear();
 			vendas = vendaFinal;
-		} else {
-			vendas = vendaDao.nota(nota);
-		}
+		
 		
 		if(pesquisarVendaID != null) {
 			List<Venda> vendaSelecionada = vendaDao.porPedido(pesquisarVendaID);
@@ -423,6 +424,15 @@ public class SistemaController {
 		    	   link = verificaLink("/pages/categorias"); //Como tem uma tabela que trata cliente e funcionario devo explicar onde direcionar
 		    	   modelAndView = new ModelAndView(link);
 		    	   atualizarPagina = "/adm/categorias";
+		       break;
+		       case "venda" :   
+		    	   Venda venda = vendaDao.findById(Integer.parseInt(id)).get();
+		    	   venda.setAtivo(false);
+		    	   vendaDao.save(venda);
+		    	   registraMsg("Venda", "Deletada com sucesso.", "erro");
+		    	   link = verificaLink("/pages/todasVendas"); //Como tem uma tabela que trata cliente e funcionario devo explicar onde direcionar
+		    	   modelAndView = new ModelAndView(link);
+		    	   atualizarPagina = "/adm/todasVendas";
 		       break;
 		     }	
 		}

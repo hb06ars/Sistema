@@ -13,7 +13,7 @@ public interface VendaDao extends JpaRepository<Venda, Integer> {
 	@Query(" from Venda where ativo = 1 and pedido = :pedido order by data desc ")
 	List<Venda> porPedido(@Param("pedido") String pedido);
 	
-	@Query(" from Venda where ativo = 1 and pedido = :pedido group by pedido order by data desc ")
+	@Query(" from Venda where ativo = 1 and pedido = :pedido order by data desc ")
 	List<Venda> nota(@Param("pedido") String pedido);
 	
 	@Query(" from Venda where ativo = 1 and pedido = :pedido order by data desc ")

@@ -49,10 +49,9 @@ function modalVendaPesquisada(){
 			
 			cell0.innerHTML = "<td>${v.produtos.codigo}";
 			cell1.innerHTML = "<td>${v.produtos.descricao}";
-			cell2.innerHTML = "<td>R\$${v.precoUnit}";
+			cell2.innerHTML = "<td><fmt:formatNumber maxFractionDigits='2' value='${v.precoUnit}' type='currency'/>";
 			cell3.innerHTML = "<td>${v.quantidade}";
-			cell4.innerHTML = "<td>R\$${v.subtotal}";
-			
+			cell4.innerHTML = "<td><fmt:formatNumber maxFractionDigits='2' value='${v.subtotal}' type='currency'/>";
 			
 			
 			}
