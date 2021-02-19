@@ -64,7 +64,7 @@
 			<td><i class="fas fa-search" onclick="modalPesquisarVenda('${v.pedido}')"></i></td>
 			
 			<c:if test="${perfilSessao.admin}">
-				<td><i class="fas fa-trash" onclick="modalDeletar('venda','${v.vendaID}')"></i></td>
+				<td><i class="fas fa-trash" onclick="modalDeletar('venda','${v.pedido}')"></i></td>
 			</c:if>
 			
 			<td>${v.pedido}
