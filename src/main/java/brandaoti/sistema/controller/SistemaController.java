@@ -426,9 +426,11 @@ public class SistemaController {
 		    	   atualizarPagina = "/adm/categorias";
 		       break;
 		       case "venda" :   
-		    	   Venda venda = vendaDao.findById(Integer.parseInt(id)).get();
-		    	   venda.setAtivo(false);
-		    	   vendaDao.save(venda);
+		    	   List<Venda> vendas = vendaDao.nota(id);
+		    	   for(Venda v : vendas) {
+		    		   v.setAtivo(false);
+			    	   vendaDao.save(v);
+		    	   }
 		    	   registraMsg("Venda", "Deletada com sucesso.", "erro");
 		    	   link = verificaLink("/pages/todasVendas"); //Como tem uma tabela que trata cliente e funcionario devo explicar onde direcionar
 		    	   modelAndView = new ModelAndView(link);
