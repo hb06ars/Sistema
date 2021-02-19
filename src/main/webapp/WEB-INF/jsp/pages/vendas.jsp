@@ -42,8 +42,8 @@ function adicionarProduto(){
 					/*Quando o produto for repetido.*/
 					var qtdAtual = table.rows[i].cells[3].innerHTML;
 					table.rows[i].cells[3].innerHTML = parseInt(qtd) + parseInt(qtdAtual);
-					var subTotalAtual = table.rows[i].cells[4].innerHTML;
-					table.rows[i].cells[4].innerHTML = parseFloat(subtotal) + parseFloat(subTotalAtual);
+					var subTotalAtual = parseFloat(table.rows[i].cells[4].innerHTML).toFixed([2]);
+					table.rows[i].cells[4].innerHTML = parseFloat(parseFloat(subtotal) + parseFloat(subTotalAtual)).toFixed([2]);
 					total = parseFloat(document.getElementById("totalVenda").innerHTML);
 					subtotal = parseFloat(table.rows[i].cells[4].innerHTML);	
 					/*Fim quando produto for repetido*/
@@ -62,12 +62,12 @@ function adicionarProduto(){
 			
 			cell0.innerHTML = document.getElementById("codigoSelecionado").value;
 			cell1.innerHTML = document.getElementById("descricaoProduto").innerHTML;
-			cell2.innerHTML = document.getElementById("valorSelecionado").value;
+			cell2.innerHTML = parseFloat(document.getElementById("valorSelecionado").value).toFixed([2]);
 			cell3.innerHTML = document.getElementById("quantidade").value;
-			cell4.innerHTML = document.getElementById("subTotalSelecionado").value;
+			cell4.innerHTML = parseFloat(document.getElementById("subTotalSelecionado").value).toFixed([2]);
 			var codigoStr = "\""+codigo+"\"";
 			cell5.innerHTML = "<i class='fas fa-trash' onClick='removerCelula("+codigoStr+")'></i>";
-			var subtotal = parseFloat(document.getElementById("subTotalSelecionado").value);
+			var subtotal = parseFloat(document.getElementById("subTotalSelecionado").value).toFixed([2]);
 		}
 		
 		calcularTotal();
@@ -83,11 +83,11 @@ function calcularTotal(){
 	for(var i = 0; i < linhas; i++){
 		try{
 			if(parseFloat(table.rows[i].cells[4].innerHTML) > 0){
-				total = parseFloat(total) + parseFloat(table.rows[i].cells[4].innerHTML);	
+				total = parseFloat(parseFloat(total) + parseFloat(table.rows[i].cells[4].innerHTML)).toFixed([2]);	
 			}
 		}catch(ex){}
 	}
-	document.getElementById("totalVenda").innerHTML = parseFloat(total.toFixed(2));
+	document.getElementById("totalVenda").innerHTML = parseFloat(total).toFixed([2]);
 }
 
 function removerCelula(item){
