@@ -40,7 +40,7 @@ function redirect(link){
 			</div>
 		</div>
 		<div class="col-md-3 form-group zoom">
-			<div class="card" onclick="redirect('/adm/vendas')" style="cursor:pointer; width: 18rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+			<div class="card" onclick="redirect('/adm/produtos')" style="cursor:pointer; width: 18rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 				  <img class="card-img-top" src="/img/produtos.png" alt="Card image cap">
 				  <div class="card-body">
 				    <h5 class="card-title" >Produtos</h5>
@@ -49,7 +49,7 @@ function redirect(link){
 			</div>
 		</div>
 		<div class="col-md-3 form-group zoom">
-			<div class="card" onclick="redirect('/adm/vendas')" style="cursor:pointer; width: 18rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+			<div class="card" onclick="redirect('/adm/todasVendas')" style="cursor:pointer; width: 18rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 				  <img class="card-img-top" src="/img/vendasimg.png" alt="Card image cap">
 				  <div class="card-body">
 				    <h5 class="card-title">Pesquisar Venda</h5>
@@ -58,7 +58,7 @@ function redirect(link){
 			</div>
 		</div>
 		<div class="col-md-3 form-group zoom">
-			<div class="card" onclick="redirect('/adm/vendas')" style="cursor:pointer; width: 18rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+			<div class="card" onclick="redirect('/adm/clientes')" style="cursor:pointer; width: 18rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 				  <img class="card-img-top" src="/img/usuarios.png" alt="Card image cap">
 				  <div class="card-body">
 				    <h5 class="card-title" >Clientes</h5>

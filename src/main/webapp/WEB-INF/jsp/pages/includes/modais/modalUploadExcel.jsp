@@ -10,8 +10,20 @@
 
 <!--  EDITAR PERFIL -->
 <script>
+var planilha='';
+
+function redirecionar(){
+	window.location.assign(planilha);
+}
+
 function modalUploadExcel(tabela){
 	if(tabela == 'funcionarios' || tabela == 'clientes'){
+		if(tabela == 'funcionarios'){
+			planilha = '/planilhas/Funcionarios.xlsx';
+		} else{
+			planilha = '/planilhas/Clientes.xlsx';
+		}
+		
 		document.getElementById("modelo").innerHTML = "<table class='table table-striped table-bordered table-sm'>"+"<tr>"
 		+"<td>Login</td>"
 		+"<td>Nome</td>"
@@ -28,6 +40,7 @@ function modalUploadExcel(tabela){
 		+"</table>";	
 	}
 	if(tabela == 'perfis'){
+		planilha = '/planilhas/Perfil.xlsx';
 		document.getElementById("modelo").innerHTML = "<table class='table table-striped table-bordered table-sm'>"+"<tr>"
 		+"<td>Código</td>"
 		+"<td>Descrição</td>"
@@ -40,6 +53,7 @@ function modalUploadExcel(tabela){
 		+"</table>";
 	}
 	if(tabela == 'produtos'){
+		planilha = '/planilhas/Produtos.xlsx';
 		document.getElementById("modelo").innerHTML = "<table class='table table-striped table-bordered table-sm'>"+"<tr>"
 		+"<td>Codigo</td>"
 		+"<td>Ean</td>"
@@ -72,6 +86,7 @@ function modalUploadExcel(tabela){
 		+"</table>";
 	}
 	if(tabela == 'categorias'){
+		planilha = '/planilhas/Categorias.xlsx';
 		document.getElementById("modelo").innerHTML = "<table class='table table-striped table-bordered table-sm'>"+"<tr>"
 		+"<td>Código</td>"
 		+"<td>Descrição</td>"
@@ -113,6 +128,9 @@ function modalUploadExcel(tabela){
 			</div>
 			<div class="input-group mb-3">
 				A aba da planilha deve conter o seguinte nome: Planilha1
+			</div>
+			<div class="input-group mb-3">
+				Faça o download &nbsp<div style="color:blue; cursor:pointer" onclick="redirecionar()">aqui</div>&nbsp de um exemplo.
 			</div>
 		</div>
       </div>
