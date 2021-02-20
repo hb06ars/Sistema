@@ -30,6 +30,7 @@ function modalUploadExcel(tabela){
 		+"<td>Perfil</td>"
 		+"<td>Código</td>"
 		+"<td>Email</td>"
+		+"<td>Telefone</td>"
 		+"</tr>"
 		+"<tr>"
 		+"<td>jhsb123</td>"
@@ -37,6 +38,7 @@ function modalUploadExcel(tabela){
 		+"<td>admin</td>"
 		+"<td>555</td>"
 		+"<td>jose@email.com</td>"
+		+"<td>(11)99999-9999</td>"
 		+"</table>";	
 	}
 	if(tabela == 'perfis'){

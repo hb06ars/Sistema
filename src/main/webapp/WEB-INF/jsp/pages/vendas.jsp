@@ -10,6 +10,7 @@
 <!-- HEADER -->
 
 <jsp:include page="includes/modais/modalCancelarVenda.jsp" />
+<jsp:include page="includes/modais/modalInserirCliente.jsp" />
 <!-- SCRIPT -->
 <script>
 function adicionarProduto(){
@@ -136,12 +137,66 @@ function finalizandoVenda(){
 
 function imprimirNota(){
 	/*IMPRIMINDO*/
-	var divToPrint=document.getElementById("listaProdutos");
+	var divToPrint=document.getElementById("geral");
     newWin= window.open("");
     newWin.document.write(divToPrint.outerHTML);
     newWin.print();
     newWin.close();
 }
+
+
+function validarCliente(telCLiente, observ){
+	/*INSERINDO CLIENTE*/
+	var nome='';
+	var tel='';
+	var cod='';
+	var endereco='';
+	var bairro='';
+	var ref='';
+	var obs='';
+	var encontrou = 0;
+	<c:forEach var="cl" items="${clientes}">
+	if("${cl.telefone}" == telCLiente){
+		encontrou = 1;
+		nome = "${cl.nome}";
+		tel = "${cl.telefone}";
+		endereco = "${cl.endereco}";
+		bairro = "${cl.bairro}";
+		ref = "${cl.referencia}";
+		if(observ == ''){
+			obs = "${cl.observacoes}";	
+		} else{
+			obs = observ;
+		}
+	}
+	</c:forEach>
+	var valor = '<br>';
+	valor = valor + 'Nome: ' + nome + '<br>';
+	valor = valor + 'Telefone: ' + tel + '<br>';
+	valor = valor + 'Endereço: ' + endereco + '<br>';
+	valor = valor + 'Bairro: ' + bairro + '<br>';
+	valor = valor + 'Referência: ' + ref + '<br>';
+	valor = valor + 'Obs: ' + obs + '<br>';
+	if(obs == ''){
+		valor = '<br>';
+		valor = valor + 'Cliente não cadastrado.<br>';
+		obs = observ;
+		valor = valor + 'Obs: ' + obs + '<br>';
+	}
+	if(tel == ''){
+		tel = telCLiente;
+		valor = valor + 'Telefone: ' + tel + '<br>';
+	}
+	if(encontrou == 1){
+		document.getElementById("infoCliente").innerHTML = valor;	
+	} else{
+		mensagemErro('Venda','Cliente não encontrado.');		
+		document.getElementById("infoCliente").innerHTML = valor;
+	}
+	
+}
+
+
 
 
 function cancelarVenda(){
@@ -285,6 +340,7 @@ function imgProduto(){
 	<button class="shadow btn btn-sm btn-outline-dark" onclick="fullScreen()"><i class="fas fa-desktop"></i></button>
 	<button class="shadow btn btn-sm btn-outline-dark" onclick="modalCancelarVenda()"><i class="fas fa-trash"></i></button>
 	<a class="shadow btn btn-sm btn-outline-dark" href="/adm/todasVendas" ><i class="fas fa-search"></i></a>
+	<a class="shadow btn btn-sm btn-outline-dark" onclick="modalInserirCliente()" ><i class="fas fa-user"></i></a>
 	</div>
 </div>
 
@@ -349,12 +405,15 @@ function imgProduto(){
 		
 		<div class="col-md-5 form-group">
 			<div class="nota grid-container" style="background-color:#FFFFFF;">  
-				<div style="padding:10px;">
+				<div id="geral" style="padding:10px;">
 			    	<table id="listaProdutos" >
 				    	<tr><td colspan="5">PEDIDO: <i id="numPedido">-</i> </td></tr>
 				    	<tr><td colspan="5" id="notaData"> - </td></tr>
 						<tr><td>Cód.</td><td>Descr.</td><td>Valor</td><td>Qtd.</td><td>SubTotal</td></tr>
 						<tr><td colspan="5"><b>TOTAL: R$<i id="totalVenda"> - </i></b></td></tr>
+					</table>
+					<table id="dadosCliente" >
+						<tr><td colspan="5"><br><b>CLIENTE:</b> <i id="infoCliente"> Nenhum cliente selecionado. </i></b></td></tr>
 					</table>
 				</div>
 			</div>

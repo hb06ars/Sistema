@@ -8,41 +8,51 @@
 
 <!--  EDITAR FUNCIONARIO -->
 <script>
-function modalEditarUsuario(id, login, nome, codigo, email, tipo){
+
+function modalEditarUsuario(id, nome, telefone , endereco, bairro, cep, observacoes, referencia, cidade, estado, senha, tipo){
 	document.getElementById("form").action = "/adm/atualizarUsuario";
 	var funcCliente = '';
-	var index = 1;
+	var index = 0
 	if(tipo == 'admin'){
-		index = 1;
+		index = 0;
 		funcCliente = 'funcionario';
 	}else if(tipo == 'cliente'){
-		index = 2;
+		index = 1;
 		funcCliente = 'cliente';
 	}else if(tipo == 'funcionario'){
-		index = 3;
+		index = 2;
 		funcCliente = 'funcionario';
 	}else if(tipo == 'visitante'){
-		index = 4;
+		index = 3;
 		funcCliente = 'cliente';
 	}
 	document.getElementById("permissaoFunc").selectedIndex = index;
 	document.getElementById("ID").value = id;
 	document.getElementById("nome").value = nome;
-	document.getElementById("codigoFunc").value = codigo;
-	document.getElementById("codigoFunc").readOnly = true;
-	document.getElementById("login").value = login;
-	document.getElementById("login").readOnly = true;
-	document.getElementById("email").value = email;
-	document.getElementById("senha").style.display = 'none';
-	document.getElementById("senhaRepetida").style.display = 'none';
-	document.getElementById("senha").value = '';
-	document.getElementById("senhaRepetida").value = '';
-	document.getElementById("senhaRepetida").required = false;
-	document.getElementById("senha").required = false;
-	document.getElementById("labelSenha").style.display = 'none';
-	document.getElementById("labelSenhaRepetida").style.display = 'none';
 	document.getElementById("alterarSalvar").value = 'editar';
 	document.getElementById("funcCliente").value = funcCliente;
+	
+	document.getElementById("telefone").value = telefone;
+	document.getElementById("telefone").required = false;
+	document.getElementById("endereco").value = endereco;
+	document.getElementById("endereco").required = false;
+	document.getElementById("bairro").value = bairro;
+	document.getElementById("bairro").required = false;
+	document.getElementById("cep").value = cep;
+	document.getElementById("senha").value = senha;
+	document.getElementById("senhaRepetida").value = senha;
+	document.getElementById("cep").required = false;
+	document.getElementById("senha").required = true;
+	document.getElementById("senhaRepetida").required = true;
+	document.getElementById("observacoes").value = observacoes;
+	document.getElementById("observacoes").required = false;
+	document.getElementById("referencia").value = referencia;
+	document.getElementById("referencia").required = false;
+	document.getElementById("cidade").value = cidade;
+	document.getElementById("cidade").required = false;
+	document.getElementById("estado").value = estado;
+	document.getElementById("estado").required = false;
+	
 	$("#modalEditarFuncionario").modal().show();
 }
 
@@ -50,23 +60,30 @@ function modalNovoUsuario(){
 	document.getElementById("form").action = "/adm/atualizarUsuario";
 	document.getElementById("nome").value = '';
 	document.getElementById("nome").required = true;
-	document.getElementById("codigoFunc").value = '';
-	document.getElementById("codigoFunc").required = true;
-	document.getElementById("codigoFunc").readOnly = false;
-	document.getElementById("email").readOnly = false;
-	document.getElementById("login").value = '';
-	document.getElementById("login").required = true;
-	document.getElementById("email").value = '';
-	document.getElementById("email").required = true;
-	document.getElementById("senha").style.display = 'block';
-	document.getElementById("senha").required = true;
-	document.getElementById("senhaRepetida").style.display = 'block';
-	document.getElementById("senhaRepetida").required = true;
-	document.getElementById("labelSenha").style.display = 'block';
-	document.getElementById("labelSenhaRepetida").style.display = 'block';
 	document.getElementById("alterarSalvar").value = 'novo';
 	document.getElementById("permissaoFunc").required = true;
 	document.getElementById("funcCliente").value = funcCliente;
+	document.getElementById("telefone").value = '';
+	document.getElementById("telefone").required = false;
+	document.getElementById("endereco").value = '';
+	document.getElementById("endereco").required = false;
+	document.getElementById("bairro").value = '';
+	document.getElementById("bairro").required = false;
+	document.getElementById("cep").value = '';
+	document.getElementById("senha").value = '';
+	document.getElementById("senha").required = true;
+	document.getElementById("senhaRepetida").value = '';
+	document.getElementById("senhaRepetida").required = true;
+	document.getElementById("cep").required = false;
+	document.getElementById("observacoes").value = '';
+	document.getElementById("observacoes").required = false;
+	document.getElementById("referencia").value = '';
+	document.getElementById("referencia").required = false;
+	document.getElementById("cidade").value = 'São Paulo';
+	document.getElementById("cidade").required = false;
+	document.getElementById("estado").value = 'SP';
+	document.getElementById("estado").required = false;
+	
 	$("#modalEditarFuncionario").modal().show();
 }
 
@@ -75,22 +92,27 @@ function modalPesquisarUsuario(){
 	document.getElementById("form").action = "/adm/pesquisarUsuario";
 	document.getElementById("nome").value = '';
 	document.getElementById("nome").required = false;
-	document.getElementById("codigoFunc").value = '';
-	document.getElementById("codigoFunc").readOnly = false;
-	document.getElementById("codigoFunc").required = false;
-	document.getElementById("login").value = '';
-	document.getElementById("login").required = false;
-	document.getElementById("email").value = '';
-	document.getElementById("email").required = false;
-	document.getElementById("senha").style.display = 'none';
-	document.getElementById("senha").required = false;
-	document.getElementById("senhaRepetida").style.display = 'none';
-	document.getElementById("senhaRepetida").required = false;
-	document.getElementById("labelSenha").style.display = 'none';
-	document.getElementById("labelSenhaRepetida").style.display = 'none';
 	document.getElementById("permissaoFunc").required = false;
 	document.getElementById("alterarSalvar").value = 'novo';
 	document.getElementById("funcCliente").value = funcCliente;
+	document.getElementById("telefone").value = '';
+	document.getElementById("telefone").required = false;
+	document.getElementById("endereco").value = '';
+	document.getElementById("endereco").required = false;
+	document.getElementById("bairro").value = '';
+	document.getElementById("bairro").required = false;
+	document.getElementById("cep").value = '';
+	document.getElementById("cep").required = false;
+	document.getElementById("observacoes").value = '';
+	document.getElementById("observacoes").required = false;
+	document.getElementById("referencia").value = '';
+	document.getElementById("referencia").required = false;
+	document.getElementById("cidade").value = 'São Paulo';
+	document.getElementById("cidade").required = false;
+	document.getElementById("estado").value = 'SP';
+	document.getElementById("estado").required = false;
+	
+	
 	$("#modalEditarFuncionario").modal().show();
 }
 
@@ -124,9 +146,8 @@ function modalPesquisarUsuario(){
   			</div>
   			<div class="input-group mb-3">
   				<select style="height=:100%; width=:100%" class="form-control" id="permissaoFunc" name="permissaoFunc" required aria-describedby="inputGroup-sizing-default">
-						<option value="" >-- Selecione --</option>
 						<option value="admin" >Admin</option>
-						<option value="cliente" >Cliente</option>
+						<option value="cliente" selected="selected">Cliente</option>
 						<option value="funcionario" >Funcionário</option>
 						<option value="visitante" >Visitante</option>				  	
 				</select>
@@ -134,42 +155,82 @@ function modalPesquisarUsuario(){
 		</div>
 		<div class="input-group mb-3">
   			<div>
-  			Código:
+  			Telefone:
   			</div>
   			<div class="input-group mb-3">
-  				<input class="form-control" id="codigoFunc" name="codigoFunc" type="text" required aria-describedby="inputGroup-sizing-default">
+  				<input type="text" id="telefone" name="telefone" placeholder="Celular" maxlength="14" minlength="14" onkeydown="javascript: fMasc( this, mTel );" class="form-control" >
 			</div>
 		</div>
 		<div class="input-group mb-3">
   			<div>
-  			Login:
+  			Endereço:
   			</div>
   			<div class="input-group mb-3">
-  				<input class="form-control" id="login" name="login" type="text" required aria-describedby="inputGroup-sizing-default">
+  				<input class="form-control" id="endereco" name="endereco" type="text" required aria-describedby="inputGroup-sizing-default">
 			</div>
 		</div>
 		<div class="input-group mb-3">
   			<div>
-  			Email:
+  			Bairro:
   			</div>
   			<div class="input-group mb-3">
-  				<input class="form-control" id="email" name="email" type="text" required aria-describedby="inputGroup-sizing-default">
+  				<input class="form-control" id="bairro" name="bairro" type="text" required aria-describedby="inputGroup-sizing-default">
 			</div>
 		</div>
-		<div class="input-group mb-3" id="labelSenha">
+		<div class="input-group mb-3">
+  			<div>
+  			CEP:
+  			</div>
+  			<div class="input-group mb-3">
+  				<input type="text" id="cep" name="cep" placeholder="CEP" maxlength="9" minlength="9" onkeydown="javascript: fMasc( this, mCEP );" class="form-control" >
+  			</div>
+		</div>
+		<div class="input-group mb-3">
+  			<div>
+  			Referência:
+  			</div>
+  			<div class="input-group mb-3">
+  				<input class="form-control" id="referencia" name="referencia" type="text" required aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="input-group mb-3">
+  			<div>
+  			Observações:
+  			</div>
+  			<div class="input-group mb-3">
+  				<input class="form-control" id="observacoes" name="observacoes" type="text" required aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="input-group mb-3">
+  			<div>
+  			Cidade:
+  			</div>
+  			<div class="input-group mb-3">
+  				<input class="form-control" id="cidade" name="cidade" value="São Paulo" type="text" required aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="input-group mb-3">
+  			<div>
+  			Estado:
+  			</div>
+  			<div class="input-group mb-3">
+  				<input class="form-control" id="estado" name="estado" value="SP" type="text" required aria-describedby="inputGroup-sizing-default" maxlength="2" minlength="2">
+			</div>
+		</div>
+		<div class="input-group mb-3">
   			<div>
   			Senha:
   			</div>
   			<div class="input-group mb-3">
-  				<input class="form-control" id="senha" name="senha" type="password" required aria-describedby="inputGroup-sizing-default">
+  				<input class="form-control" id="senha" name="senha" type="password" aria-describedby="inputGroup-sizing-default" required>
 			</div>
 		</div>
-		<div class="input-group mb-3" id="labelSenhaRepetida">
+		<div class="input-group mb-3">
   			<div>
-  			Repita a Senha:
+  			Repita a senha:
   			</div>
   			<div class="input-group mb-3">
-  				<input class="form-control" id="senhaRepetida" name="senhaRepetida" type="password" required aria-describedby="inputGroup-sizing-default">
+  				<input class="form-control" id="senhaRepetida" name="senhaRepetida" type="password" aria-describedby="inputGroup-sizing-default" required>
 			</div>
 		</div>
       </div>

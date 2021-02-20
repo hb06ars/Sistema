@@ -251,10 +251,12 @@ public class SistemaController {
 		
 		List<Categoria> categorias = categoriaDao.buscarAtivos();
 		List<Produto> produtos = produtoDao.comEstoque();
+		List<Usuario> clientes = usuarioDao.clientesAtivos();
 		
 		modelAndView.addObject("usuarioSessao", usuarioSessao);
 		modelAndView.addObject("categorias", categorias);
 		modelAndView.addObject("produtos", produtos);
+		modelAndView.addObject("clientes", clientes);
 		verificarSessao(modelAndView);
 		enviaMsg(modelAndView);
 		return modelAndView; //retorna a variavel
@@ -317,7 +319,7 @@ public class SistemaController {
 	
 	
 	@RequestMapping(value = "/adm/clientes", method = RequestMethod.GET) // Pagina de Clientes
-	public ModelAndView clientes(@RequestParam(value = "nome", required = false, defaultValue = "Henrique Brand�o") String nome) { //Fun��o e alguns valores que recebe...
+	public ModelAndView clientes(@RequestParam(value = "nome", required = false, defaultValue = "Henrique Brandao") String nome) { //Fun��o e alguns valores que recebe...
 		String link = verificaLink("/pages/clientes"); //Session
 		ModelAndView modelAndView = new ModelAndView(link); //JSP que ir� acessar.
 		
@@ -656,7 +658,6 @@ public class SistemaController {
 	public ModelAndView atualizarUsuario(Usuario usuario, String permissaoFunc, String codigoFunc, String senhaRepetida, String alterarSalvar, String funcCliente) { //Fun��o e alguns valores que recebe...
 		//Deletando ID de alguma tabela que recebo.
 		Perfil perfildaSessao = perfilDao.findById(Integer.parseInt(""+perfilSessao.getPerfilID())).get();
-		System.out.println("perfildaSessao " +perfildaSessao.getDescricao());
 		String link = verificaLink("/pages/funcionarios"); //Session
 		Boolean valido = false;
 		Boolean funcionario;
@@ -682,7 +683,6 @@ public class SistemaController {
 		if(valido) {
 			if(senhaRepetida.equals(usuario.getSenha())) {
 				if(perfildaSessao.getAdmin()) {
-					System.out.println("V3" +perfildaSessao);
 					Usuario novoUsuario = new Usuario();
 					if(usuario.getID() != null) {
 						novoUsuario = usuarioDao.findById(usuario.getID()).get();
@@ -692,6 +692,15 @@ public class SistemaController {
 			    	novoUsuario.setEmail(usuario.getEmail());
 			    	novoUsuario.setLogin(usuario.getLogin());
 			    	novoUsuario.setNome(usuario.getNome());
+			    	novoUsuario.setTelefone(usuario.getTelefone());
+			    	novoUsuario.setEndereco(usuario.getEndereco());
+			    	novoUsuario.setBairro(usuario.getBairro());
+			    	novoUsuario.setCep(usuario.getCep());
+			    	novoUsuario.setObservacoes(usuario.getObservacoes());
+			    	novoUsuario.setReferencia(usuario.getReferencia());
+			    	novoUsuario.setCidade(usuario.getCidade());
+			    	novoUsuario.setEstado(usuario.getEstado());
+			    	novoUsuario.setSenha(usuario.getSenha());
 			    	if(alterarSalvar.equals("novo")) {
 			    		novoUsuario.setSenha(usuario.getSenha());
 			    	}
@@ -1100,6 +1109,8 @@ public List<Tabela> uploadExcelFile(@ModelAttribute MultipartFile file) throws E
 			if(coluna == 2) u.setPerfil(perfilDao.porNome(conteudo));
 			if(coluna == 3) u.setCodigo(conteudo);
 			if(coluna == 4) u.setEmail(conteudo);
+			if(coluna == 5) u.setTelefone(conteudo);
+			if(coluna == 6) u.setEndereco(conteudo);
 			u.setSenha("teste123");
 			
 			if(finalLinha >= 4) {

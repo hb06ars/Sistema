@@ -38,7 +38,9 @@
 		<c:if test="${perfilSessao.admin}">
 			<th>Editar </th>
 		</c:if> 
-		<th>Login</th><th>Nome</th><th>Perfil</th><th>Código</th><th>Email</th>
+		<th>Nome</th>
+		<th>Telefone</th><th>Endereco</th><th>Bairro</th><th>CEP</th><th>Observacoes</th><th>Referência</th><th>Cidade</th><th>Estado</th>
+		<th>Perfil</th>
 		<c:if test="${perfilSessao.admin}">
 			<th>Excluir</th> 
 		</c:if>
@@ -50,6 +52,12 @@
 		<th><input type="text" id="filtro3"/></th>
 		<th><input type="text" id="filtro4"/></th>
 		<th><input type="text" id="filtro5"/></th>
+		<th><input type="text" id="filtro6"/></th>
+		<th><input type="text" id="filtro7"/></th>
+		<th><input type="text" id="filtro8"/></th>
+		<th><input type="text" id="filtro9"/></th>
+		<th><input type="text" id="filtro10"/></th>
+		<th><input type="text" id="filtro11"/></th>
 		<th></th>
 		</tr>
 		
@@ -61,13 +69,18 @@
 			<c:if test="${perfilSessao.admin}">
 				<c:if test="${u.perfil.cliente == true}"><c:set var = "tipoPerfilFunc" value = "cliente"/></c:if>
 				<c:if test="${u.perfil.visitante == true}"><c:set var = "tipoPerfilFunc" value = "visitante"/></c:if>
-				<td><i class="fas fa-edit" onclick="modalEditarUsuario(${u.ID}, '${u.login}', '${u.nome}','${u.codigo}','${u.email}','${tipoPerfilFunc}')"></i></td>
+				<td><i class="fas fa-edit" onclick="modalEditarUsuario(${u.ID}, '${u.nome}', '${u.telefone}' , '${u.endereco}', '${u.bairro}', '${u.cep}', '${u.observacoes}', '${u.referencia}' , '${u.cidade}' , '${u.estado}', '${u.senha}', '${tipoPerfilFunc}')"></i></td>
 			</c:if>
-			<td>${u.login}  
 			<td>${u.nome}   
+			<td>${u.telefone}
+			<td>${u.endereco}
+			<td>${u.bairro}
+			<td>${u.cep}
+			<td>${u.observacoes}
+			<td>${u.referencia}
+			<td>${u.cidade}
+			<td>${u.estado}
 			<td>${u.perfil.descricao} 
-			<td>${u.codigo} 
-			<td>${u.email}  
 			<c:if test="${perfilSessao.admin}">
 				<td><i class="fas fa-trash" onclick="modalDeletar('cliente', ${u.ID})" ></i></td>
 			</c:if>

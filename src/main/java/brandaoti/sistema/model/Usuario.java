@@ -31,6 +31,25 @@ public class Usuario implements Serializable {
 	private Boolean ativo = true;
 	@Column(name = "codigo",nullable = true)
 	private String codigo;
+	@Column(name = "telefone",nullable = true)
+	private String telefone;
+	@Column(name = "endereco",nullable = true)
+	private String endereco;
+	
+	@Column(name = "bairro",nullable = true)
+	private String bairro;
+	@Column(name = "cep",nullable = true)
+	private String cep;
+	@Column(name = "observacoes",nullable = true)
+	private String observacoes;
+	@Column(name = "referencia",nullable = true)
+	private String referencia;
+	@Column(name = "cidade",nullable = true)
+	private String cidade;
+	@Column(name = "estado",nullable = true)
+	private String estado;
+	
+	
 	@ManyToOne
 	private Perfil perfil;
 	
@@ -85,6 +104,54 @@ public class Usuario implements Serializable {
 	}
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	public String getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	public String getBairro() {
+		return bairro;
+	}
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+	public String getObservacoes() {
+		return observacoes;
+	}
+	public void setObservacoes(String observacoes) {
+		this.observacoes = observacoes;
+	}
+	public String getReferencia() {
+		return referencia;
+	}
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	
 	
