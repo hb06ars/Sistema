@@ -75,7 +75,7 @@ function iniciando(){
 		}
 	}
 
-    var data = new Date(),
+    	var data = new Date(),
         dia  = data.getDate().toString(),
         diaF = (dia.length == 1) ? '0'+dia : dia,
         mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
@@ -88,7 +88,7 @@ function iniciando(){
 		var teste = new Date(arr[0], arr[1] - 1, arr[2]);
 		var dia = teste.getDay();
 	    valor = valor + " - " + semana[dia];
-    	document.getElementById("dataHoje").innerHTML = valor;
+	    document.getElementById("dataHoje").innerHTML = valor;
 
     	
     	modalVendaPesquisada();
