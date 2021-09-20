@@ -27,7 +27,10 @@ function adicionarProduto(){
 		/*Inserindo produtos no Carrinho*/
 		var qtd = document.getElementById("quantidade").value;
 		var subtotal = document.getElementById("subTotalSelecionado").value;
+		console.log('qtd: '+qtd);
 		document.getElementById("subTotalSelecionado").value = document.getElementById("valorSelecionado").value * qtd;
+		console.log('valorSelecionado: '+document.getElementById("valorSelecionado").value);
+		console.log('subTotalSelecionado: '+subtotal);
 		var codigo = document.getElementById("codigoSelecionado").value;
 		
 		var table = document.getElementById("listaProdutos");
@@ -43,8 +46,10 @@ function adicionarProduto(){
 					/*Quando o produto for repetido.*/
 					var qtdAtual = table.rows[i].cells[3].innerHTML;
 					table.rows[i].cells[3].innerHTML = parseInt(qtd) + parseInt(qtdAtual);
-					var subTotalAtual = parseFloat(table.rows[i].cells[4].innerHTML).toFixed([2]);
-					table.rows[i].cells[4].innerHTML = parseFloat(parseFloat(subtotal) + parseFloat(subTotalAtual)).toFixed([2]);
+					console.log('------------------------------------------------------------');
+					
+					var subTotalAtual = parseFloat(document.getElementById("valorSelecionado").value * table.rows[i].cells[3].innerHTML).toFixed([2]);
+					table.rows[i].cells[4].innerHTML = subTotalAtual;
 					total = parseFloat(document.getElementById("totalVenda").innerHTML);
 					subtotal = parseFloat(table.rows[i].cells[4].innerHTML);	
 					/*Fim quando produto for repetido*/
@@ -232,7 +237,7 @@ function iniciar() {
 	    mesF = (mes.length == 1) ? '0'+mes : mes,
 	    anoF = data.getFullYear(),
 		valor = diaF+"/"+mesF+"/"+anoF;
-		var hora = data.getHours() + "h" + data.getMinutes() + "m"+ " - OP: ${usuarioSessao}" ;
+		var hora = data.getHours() + "h" + data.getMinutes() + "m"+ " - OP: ${usuarioSessao.nome}" ;
 		var random = Math.floor(Math.random() * 100);
 		document.getElementById("notaData").innerHTML = valor + " - " + hora;
 		var pedido = anoF+mesF+diaF+data.getHours()+data.getMinutes()+data.getSeconds()+random;

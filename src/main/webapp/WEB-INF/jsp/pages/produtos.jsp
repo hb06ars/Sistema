@@ -35,13 +35,13 @@
 	<table id="tabela" class="table table-striped table-bordered table-sm">
 		<thead>
 		<tr>
-		<c:if test="${perfilSessao.admin}">
+		<c:if test="${usuarioSessao.perfil.admin}">
 			<th>Editar </th>
 		</c:if> 
 		<th>Ver </th>
 		<th>Código</th><th>EAN</th><th>Descrição</th><th>Preço</th><th>Categoria</th><th>Promoção</th><th>Estoque
 		</th><th>Fornecedor</th><th>Marca</th><th>Peso</th><th>Tipo</th><th>Unidades</th>
-		<c:if test="${perfilSessao.admin}">
+		<c:if test="${usuarioSessao.perfil.admin}">
 			<th>Excluir</th> 
 		</c:if>
 		
@@ -71,7 +71,7 @@
 		
 		
 		<c:forEach items="${produtos}" var="p">
-			<c:if test="${perfilSessao.admin}">
+			<c:if test="${usuarioSessao.perfil.admin}">
 				<td><i class="fas fa-edit" onclick="modalEditarProduto('${p.produtoID}','${p.codigo}','${p.ean}','${p.descricao}','${p.preco}','${p.categoria.descricao}','${p.precoPromocional}','${p.estoque}','${p.fornecedor}','${p.marca}','${p.peso}','${p.tipoPeso}','${p.unidades}','${p.imgPath}')"></i></td>
 			</c:if>
 			<td><i class="fas fa-camera" onclick="modalImagem('${p.imgPath}')" ></i></td>
@@ -87,7 +87,7 @@
 			<td>${p.peso}
 			<td>${p.tipoPeso}
 			<td>${p.unidades} 
-			<c:if test="${perfilSessao.admin}">
+			<c:if test="${usuarioSessao.perfil.admin}">
 				<td><i class="fas fa-trash" onclick="modalDeletar('produto', ${p.produtoID})" ></i></td>
 			</c:if>
 			<tr>	

@@ -34,11 +34,11 @@
 	<table id="tabela" class="table table-striped table-bordered table-sm">
 	<thead>
 		<tr>
-		<c:if test="${perfilSessao.admin}">
+		<c:if test="${usuarioSessao.perfil.admin}">
 			<th>Editar </th>
 		</c:if>
 		<th>Código </th><th>Descrição</th> 
-		<c:if test="${perfilSessao.admin}">
+		<c:if test="${usuarioSessao.perfil.admin}">
 			<th>Excluir</th> 
 		</c:if>
 		
@@ -55,7 +55,7 @@
 	<tbody>
 		<tr>
 		<c:forEach items="${perfis}" var="p">
-			<c:if test="${perfilSessao.admin}">
+			<c:if test="${usuarioSessao.perfil.admin}">
 				<c:if test="${p.admin == true}"><c:set var = "tipoPerfil" value = "admin"/></c:if>
 				<c:if test="${p.cliente == true}"><c:set var = "tipoPerfil" value = "cliente"/></c:if>
 				<c:if test="${p.funcionario == true}"><c:set var = "tipoPerfil" value = "funcionario"/></c:if>
@@ -64,7 +64,7 @@
 			</c:if>
 			<td>${p.codigo}  </td>
 			<td>${p.descricao}</td>
-			<c:if test="${perfilSessao.admin}">
+			<c:if test="${usuarioSessao.perfil.admin}">
 				<td><i class="fas fa-trash" onclick="modalDeletar('perfil', ${p.perfilID})" ></i></td>
 			</c:if>
 			<tr>	

@@ -34,11 +34,11 @@
 	<table id="tabela" class="table table-striped table-bordered table-sm">
 		<thead>
 		<tr>
-		<c:if test="${perfilSessao.admin}">
+		<c:if test="${usuarioSessao.perfil.admin}">
 			<th>Editar </th>
 		</c:if>
 		<th>Código </th><th>Descrição</th> 
-		<c:if test="${perfilSessao.admin}">
+		<c:if test="${usuarioSessao.perfil.admin}">
 			<th>Excluir</th> 
 		</c:if>
 		
@@ -54,12 +54,12 @@
 		<tbody>
 		<tr>
 		<c:forEach items="${categorias}" var="ca">
-			<c:if test="${perfilSessao.admin}">
+			<c:if test="${usuarioSessao.perfil.admin}">
 				<td><i class="fas fa-edit" onclick="modalEditarCategoria(${ca.categoriaID}, '${ca.descricao}', '${ca.codigo}')"></i></td>
 			</c:if>
 			<td>${ca.codigo}  </td>
 			<td>${ca.descricao}</td>
-			<c:if test="${perfilSessao.admin}">
+			<c:if test="${usuarioSessao.perfil.admin}">
 				<td><i class="fas fa-trash" onclick="modalDeletar('categoria', ${ca.categoriaID})" ></i></td>
 			</c:if>
 			<tr>	

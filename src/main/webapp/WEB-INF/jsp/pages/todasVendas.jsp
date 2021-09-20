@@ -38,14 +38,14 @@
 		<thead>
 		<tr>
 		<th>Ver
-		<c:if test="${perfilSessao.admin}">
+		<c:if test="${usuarioSessao.perfil.admin}">
 			<th>Deletar
 		</c:if> 
 		<th>Pedido</th><th>Data</th><th>Funcionário</th><th>Total</th>
 		
 		<tr>
 		<th></th>
-		<c:if test="${perfilSessao.admin}">
+		<c:if test="${usuarioSessao.perfil.admin}">
 			<th></th>
 		</c:if>
 		<th><input type="text" id="filtro1"/></th>
@@ -63,7 +63,7 @@
 			
 			<td><i class="fas fa-search" onclick="modalPesquisarVenda('${v.pedido}')"></i></td>
 			
-			<c:if test="${perfilSessao.admin}">
+			<c:if test="${usuarioSessao.perfil.admin}">
 				<td><i class="fas fa-trash" onclick="modalDeletar('venda','${v.pedido}')"></i></td>
 			</c:if>
 			

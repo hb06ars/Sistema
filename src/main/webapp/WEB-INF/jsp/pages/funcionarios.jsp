@@ -35,11 +35,11 @@
 	<table id="tabela" class="table table-striped table-bordered table-sm">
 		<thead>
 		<tr>
-		<c:if test="${perfilSessao.admin}">
+		<c:if test="${usuarioSessao.perfil.admin}">
 			<th>Editar </th>
 		</c:if> 
 		<th>Login</th><th>Nome</th><th>Perfil</th><th>Código</th><th>Email</th>
-		<c:if test="${perfilSessao.admin}">
+		<c:if test="${usuarioSessao.perfil.admin}">
 			<th>Excluir</th> 
 		</c:if>
 		
@@ -61,7 +61,7 @@
 		
 		
 		<c:forEach items="${usuarios}" var="u">
-			<c:if test="${perfilSessao.admin}">
+			<c:if test="${usuarioSessao.perfil.admin}">
 				<c:if test="${u.perfil.admin == true}"><c:set var = "tipoPerfilFunc" value = "admin"/></c:if>
 				<c:if test="${u.perfil.funcionario == true}"><c:set var = "tipoPerfilFunc" value = "funcionario"/></c:if>
 				<td><i class="fas fa-edit" onclick="modalEditarUsuario(${u.ID}, '${u.login}', '${u.nome}','${u.codigo}','${u.email}','${tipoPerfilFunc}')"></i></td>
@@ -71,7 +71,7 @@
 			<td>${u.perfil.descricao} 
 			<td>${u.codigo} 
 			<td>${u.email}  
-			<c:if test="${perfilSessao.admin}">
+			<c:if test="${usuarioSessao.perfil.admin}">
 				<td><i class="fas fa-trash" onclick="modalDeletar('funcionario', ${u.ID})" ></i></td>
 			</c:if>
 			<tr>	

@@ -211,6 +211,7 @@ public class SistemaController extends HttpServlet {
 		if(session.getAttribute("usuarioSessao") != null) {
 			usuarioSessao = (Usuario) session.getAttribute("usuarioSessao");
 			logado = true;
+			modelAndView.addObject("boasVindas", boasVindas);
 		}
 		
 		

@@ -35,13 +35,13 @@
 	<table id="tabela" class="table table-striped table-bordered table-sm">
 		<thead>
 		<tr>
-		<c:if test="${perfilSessao.admin}">
+		<c:if test="${usuarioSessao.perfil.admin}">
 			<th>Editar </th>
 		</c:if> 
 		<th>Nome</th>
 		<th>Telefone</th><th>Endereco</th><th>Bairro</th><th>CEP</th><th>Observacoes</th><th>Referência</th><th>Cidade</th><th>Estado</th>
 		<th>Perfil</th>
-		<c:if test="${perfilSessao.admin}">
+		<c:if test="${usuarioSessao.perfil.admin}">
 			<th>Excluir</th> 
 		</c:if>
 		
@@ -66,7 +66,7 @@
 		<tbody>
 		<tr>
 		<c:forEach items="${usuarios}" var="u">
-			<c:if test="${perfilSessao.admin}">
+			<c:if test="${usuarioSessao.perfil.admin}">
 				<c:if test="${u.perfil.cliente == true}"><c:set var = "tipoPerfilFunc" value = "cliente"/></c:if>
 				<c:if test="${u.perfil.visitante == true}"><c:set var = "tipoPerfilFunc" value = "visitante"/></c:if>
 				<td><i class="fas fa-edit" onclick="modalEditarUsuario(${u.ID}, '${u.nome}', '${u.telefone}' , '${u.endereco}', '${u.bairro}', '${u.cep}', '${u.observacoes}', '${u.referencia}' , '${u.cidade}' , '${u.estado}', '${u.senha}', '${tipoPerfilFunc}')"></i></td>
@@ -81,7 +81,7 @@
 			<td>${u.cidade}
 			<td>${u.estado}
 			<td>${u.perfil.descricao} 
-			<c:if test="${perfilSessao.admin}">
+			<c:if test="${usuarioSessao.perfil.admin}">
 				<td><i class="fas fa-trash" onclick="modalDeletar('cliente', ${u.ID})" ></i></td>
 			</c:if>
 			<tr>	
